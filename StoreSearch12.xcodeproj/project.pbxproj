@@ -17,6 +17,7 @@
 		5D756F2C25919FCB0062DB53 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D756F2B25919FCB0062DB53 /* SearchResultCell.xib */; };
 		5D756F2F2591A8D80062DB53 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D756F2E2591A8D80062DB53 /* SearchResultCell.swift */; };
 		5D756F332591AF350062DB53 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D756F322591AF350062DB53 /* NothingFoundCell.xib */; };
+		5D756F3A25928C720062DB53 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D756F3925928C720062DB53 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5D756F2B25919FCB0062DB53 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		5D756F2E2591A8D80062DB53 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		5D756F322591AF350062DB53 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		5D756F3925928C720062DB53 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +70,14 @@
 				5D756F19259153300062DB53 /* Assets.xcassets */,
 				5D756F1E259153300062DB53 /* Info.plist */,
 				5D756F1B259153300062DB53 /* LaunchScreen.storyboard */,
+				5D756F3925928C720062DB53 /* LoadingCell.xib */,
 				5D756F162591532F0062DB53 /* Main.storyboard */,
-				5D756F122591532F0062DB53 /* SceneDelegate.swift */,
-				5D756F142591532F0062DB53 /* SearchViewController.swift */,
-				5D756F2725917C5B0062DB53 /* SearchResult.swift */,
-				5D756F2B25919FCB0062DB53 /* SearchResultCell.xib */,
-				5D756F2E2591A8D80062DB53 /* SearchResultCell.swift */,
 				5D756F322591AF350062DB53 /* NothingFoundCell.xib */,
+				5D756F122591532F0062DB53 /* SceneDelegate.swift */,
+				5D756F2725917C5B0062DB53 /* SearchResult.swift */,
+				5D756F2E2591A8D80062DB53 /* SearchResultCell.swift */,
+				5D756F2B25919FCB0062DB53 /* SearchResultCell.xib */,
+				5D756F142591532F0062DB53 /* SearchViewController.swift */,
 			);
 			path = StoreSearch12;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			files = (
 				5D756F1D259153300062DB53 /* LaunchScreen.storyboard in Resources */,
 				5D756F1A259153300062DB53 /* Assets.xcassets in Resources */,
+				5D756F3A25928C720062DB53 /* LoadingCell.xib in Resources */,
 				5D756F2C25919FCB0062DB53 /* SearchResultCell.xib in Resources */,
 				5D756F332591AF350062DB53 /* NothingFoundCell.xib in Resources */,
 				5D756F182591532F0062DB53 /* Main.storyboard in Resources */,
