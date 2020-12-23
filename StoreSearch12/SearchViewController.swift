@@ -15,6 +15,8 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched = false
     var isLoading = false
+    var dataTask: URLSessionDataTask?
+    
     
     
     //Cell Reuse identifiers
@@ -108,6 +110,8 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
           searchBar.resignFirstResponder()
             
+//Cancels the data task if there is another one entered in the search bar.
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
    
@@ -119,12 +123,12 @@ extension SearchViewController: UISearchBarDelegate {
         //Get a shared URLSession instance. This uses the default config with respect to caching, cookies, and other web stuff.
             let session = URLSession.shared
         //Create a data task to fetch the contents of the URL.
-            let dataTask = session.dataTask(with: url) {data, response, error in
+          dataTask = session.dataTask(with: url) {data, response, error in
         /*“Data, response, or error If error is nil, the communication with the server succeeded;
                  response holds the server’s response code and headers,
                  and data contains the actual data fetched from the server, in this case a blob of JSON.*/
-            if let error = error {
-                  print("Failure! \(error.localizedDescription)")
+            if let error = error as NSError?, error.code == -999 {
+              return
                 } else if let httpResponse = response as? HTTPURLResponse,
                   httpResponse.statusCode == 200 {
       //Parses the data into usable SearchResults data
@@ -149,7 +153,7 @@ extension SearchViewController: UISearchBarDelegate {
                     }
                 }
             //One the data task is created, call resume to start it.
-                    dataTask.resume()
+                    dataTask?.resume()
                 }
         }
     
