@@ -11,6 +11,8 @@ class SearchViewController: UIViewController {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     
     var searchResults = [SearchResult]()
     var hasSearched = false
@@ -28,10 +30,15 @@ class SearchViewController: UIViewController {
             }
         }
     
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        performSearch()
+        print("Segment Changed: \(sender.selectedSegmentIndex)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //Gives the search bar room to breath.
-        tableView.contentInset = UIEdgeInsets(top: 50,
+        tableView.contentInset = UIEdgeInsets(top: 94,
                                               left: 0,
                                               bottom: 0,
                                               right: 0)
@@ -56,20 +63,21 @@ class SearchViewController: UIViewController {
 
 // MARK: - Helper Methods
 
-    //Create the URL for the request.
-    func iTunesURL(searchText: String) -> URL {
-//enables the search to handle special characters
-        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-//Added &limit=200 to artificially slow down search.
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@",
-                             encodedText)
-      let url = URL(string: urlString)
-    
-      return url!
-    }
-
-    //Returns a new JSON Data object from the server.
-    
+    //Create the URL for the request
+func iTunesURL(searchText: String, category: Int) -> URL {
+      let kind: String
+      switch category {
+        case 1: kind = "musicTrack"
+        case 2: kind = "software"
+        case 3: kind = "ebook"
+        default: kind = ""
+      }
+    //enables the search to handle special characters
+            let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            let urlString = "https://itunes.apple.com/search?" + "term=\(encodedText)&limit=200&entity=\(kind)"
+            let url = URL(string: urlString)
+            return url!
+          }
 
     //Use a JSONdecoder to convert the data to a ResultArray object to extract the results property.
     func parse(data: Data) -> [SearchResult] {
@@ -105,7 +113,7 @@ class SearchViewController: UIViewController {
 //MARK:- Seach Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func performSearch() {
 //None of this will happen unless the user types something into the search field.
         if !searchBar.text!.isEmpty {
           searchBar.resignFirstResponder()
@@ -119,8 +127,9 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
 
         //Create the URL Object
-            let url = iTunesURL(searchText: searchBar.text!)
-        //Get a shared URLSession instance. This uses the default config with respect to caching, cookies, and other web stuff.
+        let url = iTunesURL(searchText: searchBar.text!,
+                            category: segmentedControl.selectedSegmentIndex)
+            //Get a shared URLSession instance. This uses the default config with respect to caching, cookies, and other web stuff.
             let session = URLSession.shared
         //Create a data task to fetch the contents of the URL.
           dataTask = session.dataTask(with: url) {data, response, error in
@@ -159,6 +168,10 @@ extension SearchViewController: UISearchBarDelegate {
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSearch()
     }
         
     }

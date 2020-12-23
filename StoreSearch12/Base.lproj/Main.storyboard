@@ -25,6 +25,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nSe-i7-EB4"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN8-At-jPV">
+                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="QHZ-16-J1y">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="E13-Jy-msC">
+                                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-Books"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <searchBar contentMode="redraw" placeholder="App name, artisit, song, album, e-book" translatesAutoresizingMaskIntoConstraints="NO" id="Dhl-7Q-M74">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <color key="barTintColor" name="SearchBar"/>
@@ -40,14 +57,19 @@
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3nM-4P-GOg"/>
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8X3-LM-ih8"/>
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8z0-Xn-PeO"/>
+                            <constraint firstItem="YN8-At-jPV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9DT-9P-fRM"/>
+                            <constraint firstItem="YN8-At-jPV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="F5N-ix-7q7"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FRZ-Cq-JOP"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LKv-Ws-deW"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Re1-cV-sAD"/>
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fnk-bv-Ecd"/>
+                            <constraint firstItem="YN8-At-jPV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k6W-CX-xmM"/>
+                            <constraint firstItem="YN8-At-jPV" firstAttribute="top" secondItem="Dhl-7Q-M74" secondAttribute="bottom" constant="-6" id="zRD-eK-CAa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Dhl-7Q-M74" id="HD9-kN-Qr7"/>
+                        <outlet property="segmentedControl" destination="E13-Jy-msC" id="f44-df-eUF"/>
                         <outlet property="tableView" destination="XKf-tH-WwB" id="xI5-fQ-tEz"/>
                     </connections>
                 </viewController>
