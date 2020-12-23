@@ -58,8 +58,8 @@ class SearchViewController: UIViewController {
     func iTunesURL(searchText: String) -> URL {
 //enables the search to handle special characters
         let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200",
+//Added &limit=200 to artificially slow down search.
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@",
                              encodedText)
       let url = URL(string: urlString)
     
@@ -67,15 +67,7 @@ class SearchViewController: UIViewController {
     }
 
     //Returns a new JSON Data object from the server.
-    func performStoreRequest(with url:URL) -> Data? {
-        do {
-            return try Data(contentsOf: url)
-        } catch {
-            print("Download Error: \(error.localizedDescription)")
-            showNetworkError()
-            return nil
-        }
-    }
+    
 
     //Use a JSONdecoder to convert the data to a ResultArray object to extract the results property.
     func parse(data: Data) -> [SearchResult] {
@@ -121,26 +113,45 @@ extension SearchViewController: UISearchBarDelegate {
    
             hasSearched = true
             searchResults = []
-/*This is a reference to a global queue provided by the system. It is part of
-     the system.
- */
-            let queue = DispatchQueue.global()
-            let url = self.iTunesURL(searchText: searchBar.text!)
-                //Dispatches a closure on the queue. After this, the main thread is free to continue.
-                queue.async {
-                  if let data = self.performStoreRequest(with: url) {
-                    self.searchResults = self.parse(data: data)
-                    self.searchResults.sort(by: <)
-                    //Makes the loading nib go away when done.
-                    DispatchQueue.main.async {
+
+        //Create the URL Object
+            let url = iTunesURL(searchText: searchBar.text!)
+        //Get a shared URLSession instance. This uses the default config with respect to caching, cookies, and other web stuff.
+            let session = URLSession.shared
+        //Create a data task to fetch the contents of the URL.
+            let dataTask = session.dataTask(with: url) {data, response, error in
+        /*“Data, response, or error If error is nil, the communication with the server succeeded;
+                 response holds the server’s response code and headers,
+                 and data contains the actual data fetched from the server, in this case a blob of JSON.*/
+            if let error = error {
+                  print("Failure! \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 {
+      //Parses the data into usable SearchResults data
+                    if let data = data {
+                      self.searchResults = self.parse(data: data)
+                      self.searchResults.sort(by: <)
+                      DispatchQueue.main.async {
                         self.isLoading = false
                         self.tableView.reloadData()
+                      }
+                      return
                     }
-                    return
-                  }
+                  print("Success! \(data!)")
+                } else {
+                  print("Failure! \(response!)")
                 }
-              }
-            }
+                    DispatchQueue.main.async {
+                      self.hasSearched = false
+                      self.isLoading = false
+                      self.tableView.reloadData()
+                      self.showNetworkError()
+                    }
+                }
+            //One the data task is created, call resume to start it.
+                    dataTask.resume()
+                }
+        }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
