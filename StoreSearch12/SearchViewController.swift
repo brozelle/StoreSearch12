@@ -211,17 +211,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! SearchResultCell
 //Puts the artists name into the name label.
         let searchResult = searchResults[indexPath.row]
-        cell.nameLabel.text = searchResult.name
-            //Check to see if the artist is not empty. If it is, then display unknown.
-        if searchResult.artist.isEmpty {
-          cell.artistNameLabel.text = "Unknown"
-        } else {
-          cell.artistNameLabel.text = String(
-            format: "%@ (%@)",
-            searchResult.artist,
-            searchResult.type)
-        }
-        cell.artistNameLabel.text = searchResult.artistName
+        cell.configure(for: searchResult)
         return cell
       }
     }
