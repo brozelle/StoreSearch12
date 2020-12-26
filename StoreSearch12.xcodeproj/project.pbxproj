@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D40662E25940306007CE00A /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D40662D25940306007CE00A /* UIImageView+DownloadImage.swift */; };
+		5D40663325950A96007CE00A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D40663225950A96007CE00A /* DetailViewController.swift */; };
 		5D756F112591532F0062DB53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D756F102591532F0062DB53 /* AppDelegate.swift */; };
 		5D756F132591532F0062DB53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D756F122591532F0062DB53 /* SceneDelegate.swift */; };
 		5D756F152591532F0062DB53 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D756F142591532F0062DB53 /* SearchViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		5D40662D25940306007CE00A /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		5D40663225950A96007CE00A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5D756F0D2591532F0062DB53 /* StoreSearch12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D756F102591532F0062DB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D756F122591532F0062DB53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				5D756F102591532F0062DB53 /* AppDelegate.swift */,
 				5D756F19259153300062DB53 /* Assets.xcassets */,
+				5D40663225950A96007CE00A /* DetailViewController.swift */,
 				5D756F1E259153300062DB53 /* Info.plist */,
 				5D756F3925928C720062DB53 /* LoadingCell.xib */,
 				5D756F162591532F0062DB53 /* Main.storyboard */,
@@ -160,6 +163,7 @@
 				5D756F2825917C5B0062DB53 /* SearchResult.swift in Sources */,
 				5D756F132591532F0062DB53 /* SceneDelegate.swift in Sources */,
 				5D756F2F2591A8D80062DB53 /* SearchResultCell.swift in Sources */,
+				5D40663325950A96007CE00A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
