@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="landscape" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Search" customClass="SearchViewController" customModule="StoreSearch12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XKf-tH-WwB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="RkQ-o1-G0v"/>
@@ -26,11 +26,11 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN8-At-jPV">
-                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="667" height="32"/>
                                 <items>
                                     <barButtonItem style="plain" id="QHZ-16-J1y">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="E13-Jy-msC">
-                                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="E13-Jy-msC">
+                                            <rect key="frame" x="20" y="0.0" width="627" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="All"/>
@@ -43,7 +43,7 @@
                                 </items>
                             </toolbar>
                             <searchBar contentMode="redraw" placeholder="App name, artisit, song, album, e-book" translatesAutoresizingMaskIntoConstraints="NO" id="Dhl-7Q-M74">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="56"/>
                                 <color key="barTintColor" name="SearchBar"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -58,13 +58,12 @@
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8X3-LM-ih8"/>
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8z0-Xn-PeO"/>
                             <constraint firstItem="YN8-At-jPV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9DT-9P-fRM"/>
-                            <constraint firstItem="YN8-At-jPV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="F5N-ix-7q7"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FRZ-Cq-JOP"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LKv-Ws-deW"/>
                             <constraint firstItem="Dhl-7Q-M74" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Re1-cV-sAD"/>
                             <constraint firstItem="XKf-tH-WwB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fnk-bv-Ecd"/>
                             <constraint firstItem="YN8-At-jPV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k6W-CX-xmM"/>
-                            <constraint firstItem="YN8-At-jPV" firstAttribute="top" secondItem="Dhl-7Q-M74" secondAttribute="bottom" constant="-6" id="zRD-eK-CAa"/>
+                            <constraint firstItem="YN8-At-jPV" firstAttribute="top" secondItem="Dhl-7Q-M74" secondAttribute="bottom" id="zRD-eK-CAa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,11 +82,11 @@
             <objects>
                 <viewController id="7Ng-tC-xdE" userLabel="Detail" customClass="DetailViewController" customModule="StoreSearch12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ut3-YB-vrV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Beu-d8-FRJ" userLabel="Pop-up View">
-                                <rect key="frame" x="47.5" y="183.5" width="280" height="280"/>
+                                <rect key="frame" x="193.5" y="47.5" width="280" height="280"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="NsT-TQ-q6X">
                                         <rect key="frame" x="16" y="16" width="256" height="248"/>
@@ -212,6 +211,43 @@
             </objects>
             <point key="canvasLocation" x="1021.6" y="126.38680659670166"/>
         </scene>
+        <!--Landscape-->
+        <scene sceneID="mVf-B2-KQj">
+            <objects>
+                <viewController storyboardIdentifier="LandscapeViewController" id="pAv-5g-c2b" userLabel="Landscape" customClass="LandscapeViewController" customModule="StoreSearch12" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tz9-MF-hhw">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajh-N6-y18">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="7Qs-p5-r2I"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="3g4-9j-K6z"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pAv-5g-c2b" id="v4T-uI-hkH"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="oaa-5K-lpq">
+                                <rect key="frame" x="272" y="327" width="123" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="pageChanged:" destination="pAv-5g-c2b" eventType="valueChanged" id="hZq-vU-4tS"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tF5-cg-OYg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="oaa-5K-lpq" id="b1E-FU-oF9"/>
+                        <outlet property="scrollView" destination="ajh-N6-y18" id="QaU-FH-wnQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWZ-pk-Efl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="127"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="AccentColor"/>
     <resources>
@@ -224,7 +260,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DetailBG">
-            <color red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="0.94999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SearchBar">
             <color red="0.70588235294117652" green="0.94117647058823528" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     var hasSearched = false
     var isLoading = false
     var dataTask: URLSessionDataTask?
+    var landscapeVC: LandscapeViewController?
     
     
     
@@ -108,13 +109,50 @@ func iTunesURL(searchText: String, category: Int) -> URL {
               completion: nil)
     }
     
-    /*override func prepare(for segue: UIStoryboardSegue,
-                          sender: Any?) {
-      if segue.identifier == "ShowDetail" {
-        segue.destination.modalPresentationStyle = .pageSheet
+func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+      //if the landscape mode is not nil then return right away (landscape vc is showing.)
+      guard landscapeVC == nil else { return }
+      //Finds the scene with the id "LandscapeViewController" and instantiates it.
+      landscapeVC = storyboard!.instantiateViewController(
+        withIdentifier: "LandscapeViewController") as? LandscapeViewController
+      if let controller = landscapeVC {
+        //Passes the array to the LandscapeViewController searchResult property
+        controller.searchResults = searchResults
+        //Sets the size and position of the view controller.
+        controller.view.frame = view.bounds
+        //landscape view starts out transparent and slowly fades in.
+        controller.view.alpha = 0
+        //Steps to add new view controller.
+        view.addSubview(controller.view)
+        addChild(controller)
+            coordinator.animate(
+              alongsideTransition: { _ in
+                controller.view.alpha = 1
+                self.searchBar.resignFirstResponder()
+                //dismisses the detail pop-up
+                if self.presentedViewController != nil {
+                  self.dismiss(animated: true, completion: nil)
+                }
+              }, completion: { _ in
+                controller.didMove(toParent: self)
+              })
       }
-    }*/
-    
+    }
+
+    //unembeds the landscape view controller
+    func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+      if let controller = landscapeVC {
+        controller.willMove(toParent: nil)
+        coordinator.animate(alongsideTransition: { _ in
+                controller.view.alpha = 0
+              }, completion: { _ in
+                controller.view.removeFromSuperview()
+                controller.removeFromParent()
+                self.landscapeVC = nil
+              })
+      }
+    }
+
 // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      if segue.identifier == "ShowDetail" {
@@ -124,7 +162,22 @@ func iTunesURL(searchText: String, category: Int) -> URL {
        detailViewController.searchResult = searchResult
      }
     }
+// Invoked during device rotation and when the trait collection for the veiw controller changes.
     
+    override func willTransition(to newCollection: UITraitCollection,
+                                 with coordinator: UIViewControllerTransitionCoordinator) {
+      super.willTransition(to: newCollection,
+                           with: coordinator)
+
+      switch newCollection.verticalSizeClass {
+      case .compact:
+        showLandscape(with: coordinator)
+      case .regular, .unspecified:
+        hideLandscape(with: coordinator)
+      @unknown default:
+        break
+      }
+    }
 }
 
 

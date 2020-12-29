@@ -19,14 +19,28 @@ class DetailViewController: UIViewController {
     
     var searchResult: SearchResult!
     var downloadTask: URLSessionDownloadTask?
+    enum AnimationStyle {
+      case slide
+      case fade
+    }
+
+    var dismissStyle = AnimationStyle.fade
+
 //Cancel image download if user closes pop-up before image has been completely downloaded.
     deinit {
       print("******deinit******* \(self)")
       downloadTask?.cancel()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        transitioningDelegate = self
+    }
+    
     @IBAction func close() {
+        dismissStyle = .slide
         dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func openInStore() {
@@ -46,8 +60,12 @@ class DetailViewController: UIViewController {
         if searchResult != nil {
             updateUI()
         }
+        //Gradient View
+        view.backgroundColor = UIColor.clear
+        let dimmingView = GradientView(frame: CGRect.zero)
+        dimmingView.frame = view.bounds
+        view.insertSubview(dimmingView, at: 0)
 
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Helper Methods
@@ -101,5 +119,22 @@ extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                            shouldReceive touch: UITouch) -> Bool {
         return (touch.view === self.view)
+    }
+}
+
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController,
+                            presenting: UIViewController,
+                            source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      switch dismissStyle {
+      case .slide:
+        return SlideOutAnimationController()
+      case .fade:
+        return FadeOutAnimationController()
+      }
     }
 }
