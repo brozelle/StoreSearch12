@@ -11,7 +11,7 @@ class LandscapeViewController: UIViewController {
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
-    var searchResults = [SearchResult]()
+    var search: Search!
     private var firstTime = true
     //keeps track of all the urlsessiondownloadtask objects.
     private var downloads = [URLSessionDownloadTask]()
@@ -57,8 +57,14 @@ class LandscapeViewController: UIViewController {
                                  width: safeFrame.size.width,
                                  height: pageControl.frame.size.height)
         if firstTime {
-            firstTime = false
-            tileButtons(searchResults)
+          firstTime = false
+          
+          switch search.state {
+          case .notSearchedYet, .loading, .noResults:
+            break
+          case .results(let list):
+            tileButtons(list)
+          }
         }
     }
     

@@ -24,6 +24,7 @@
 		5D756F332591AF350062DB53 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D756F322591AF350062DB53 /* NothingFoundCell.xib */; };
 		5D756F3A25928C720062DB53 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D756F3925928C720062DB53 /* LoadingCell.xib */; };
 		5DAF55ED259999740011B03C /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF55EC259999740011B03C /* FadeOutAnimationController.swift */; };
+		5DC692F3259D1F6900B135FE /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC692F2259D1F6900B135FE /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5D756F322591AF350062DB53 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		5D756F3925928C720062DB53 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		5DAF55EC259999740011B03C /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		5DC692F2259D1F6900B135FE /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				5D756F162591532F0062DB53 /* Main.storyboard */,
 				5D756F322591AF350062DB53 /* NothingFoundCell.xib */,
 				5D756F122591532F0062DB53 /* SceneDelegate.swift */,
+				5DC692F2259D1F6900B135FE /* Search.swift */,
 				5D756F2725917C5B0062DB53 /* SearchResult.swift */,
 				5D756F2E2591A8D80062DB53 /* SearchResultCell.swift */,
 				5D756F2B25919FCB0062DB53 /* SearchResultCell.xib */,
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC692F3259D1F6900B135FE /* Search.swift in Sources */,
 				5D756F152591532F0062DB53 /* SearchViewController.swift in Sources */,
 				5D756F112591532F0062DB53 /* AppDelegate.swift in Sources */,
 				5DAF55ED259999740011B03C /* FadeOutAnimationController.swift in Sources */,
