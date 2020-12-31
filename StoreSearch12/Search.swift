@@ -12,6 +12,7 @@ typealias SearchComplete = (Bool) -> Void
 class Search {
     
     private var dataTask: URLSessionDataTask?
+
     private(set) var state: State = .notSearchedYet
     
     enum State {

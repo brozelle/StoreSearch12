@@ -116,6 +116,9 @@ func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
                 controller.view.removeFromSuperview()
                 controller.removeFromParent()
                 self.landscapeVC = nil
+                if self.presentedViewController != nil {
+                  self.dismiss(animated: true, completion: nil)
+                }
               })
       }
     }
@@ -163,6 +166,7 @@ extension SearchViewController: UISearchBarDelegate {
             self.showNetworkError()
           }
           self.tableView.reloadData()
+        self.landscapeVC?.searchResultsReceived()
         }
       
       tableView.reloadData()
