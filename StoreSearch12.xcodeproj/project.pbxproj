@@ -96,8 +96,10 @@
 				5DAF55EC259999740011B03C /* FadeOutAnimationController.swift */,
 				5D40663C2597967A007CE00A /* GradientView.swift */,
 				5D756F1E259153300062DB53 /* Info.plist */,
+				5DC6932725A0201700B135FE /* InfoPlist.strings */,
 				5D406648259802FF007CE00A /* LandscapeViewController.swift */,
 				5DC69303259E300400B135FE /* LoadingCell.xib */,
+				5DC6931C259FCD5F00B135FE /* Localizable.strings */,
 				5D756F162591532F0062DB53 /* Main.storyboard */,
 				5DC692FD259E2E7900B135FE /* NothingFoundCell.xib */,
 				5D756F122591532F0062DB53 /* SceneDelegate.swift */,
@@ -108,8 +110,6 @@
 				5D756F142591532F0062DB53 /* SearchViewController.swift */,
 				5D4066432597AC79007CE00A /* SlideOutAnimationController.swift */,
 				5D40662D25940306007CE00A /* UIImageView+DownloadImage.swift */,
-				5DC6931C259FCD5F00B135FE /* Localizable.strings */,
-				5DC6932725A0201700B135FE /* InfoPlist.strings */,
 			);
 			path = StoreSearch12;
 			sourceTree = "<group>";
@@ -390,6 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6SP468TM33;
 				INFOPLIST_FILE = StoreSearch12/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6SP468TM33;
 				INFOPLIST_FILE = StoreSearch12/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

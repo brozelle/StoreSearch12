@@ -21,7 +21,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var priceButton: UIButton!
     
-    var searchResult: SearchResult!
+    //updates the labels in a property observer
+    var searchResult: SearchResult! {
+        didSet {
+            if isViewLoaded {
+                updateUI()
+            }
+        }
+    }
     var downloadTask: URLSessionDownloadTask?
     enum AnimationStyle {
       case slide
@@ -29,6 +36,7 @@ class DetailViewController: UIViewController {
     }
 
     var dismissStyle = AnimationStyle.fade
+    var isPopUp = false
 
 //Cancel image download if user closes pop-up before image has been completely downloaded.
     deinit {
@@ -54,23 +62,31 @@ class DetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+      if isPopUp {
         popupView.layer.cornerRadius = 10
-        //listens for taps anywhere in this view controller and calls the close method in response.
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
+        let gestureRecognizer = UITapGestureRecognizer(target: self,
+                                                       action: #selector(close))
         gestureRecognizer.cancelsTouchesInView = false
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
-        if searchResult != nil {
-            updateUI()
-        }
-        //Gradient View
+        
+        // Gradient view
         view.backgroundColor = UIColor.clear
         let dimmingView = GradientView(frame: CGRect.zero)
         dimmingView.frame = view.bounds
         view.insertSubview(dimmingView, at: 0)
-
+      } else {
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+        popupView.isHidden = true
+        if let displayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
+            title = displayName
+      }
+      if searchResult != nil {
+        updateUI()
+      }
     }
+}
     
     // MARK: - Helper Methods
     func updateUI() {
@@ -106,6 +122,7 @@ class DetailViewController: UIViewController {
           downloadTask = artworkImageView.loadImage(url: largeURL)
         }
         
+        popupView.isHidden = false
     }
 
 }

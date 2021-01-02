@@ -17,8 +17,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        searchVC.splitViewDetail = detailVC
     }
-
+    
+// MARK: - Properties
+    //Provides access to the split view controller. Top level.
+    var splitVC: UISplitViewController {
+      return window!.rootViewController as! UISplitViewController
+    }
+//search screen in primary pain
+    var searchVC: SearchViewController {
+      let nav = splitVC.viewControllers.first as! UINavigationController
+      return nav.viewControllers.first as! SearchViewController
+    }
+//detail screen in secondary pain
+    var detailVC: DetailViewController {
+      let nav = splitVC.viewControllers.last as! UINavigationController
+      return nav.viewControllers.first as! DetailViewController
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
