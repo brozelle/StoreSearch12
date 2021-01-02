@@ -4,6 +4,10 @@
 //
 //  Created by Buck Rozelle on 12/24/20.
 //
+//
+//NSLocalizedString("E-Book", comment: "Localized kind: E-Book")
+//
+//
 
 import UIKit
 
@@ -72,7 +76,8 @@ class DetailViewController: UIViewController {
     func updateUI() {
         nameLabel.text = searchResult.name
         if searchResult.artist.isEmpty {
-        artistNameLabel.text = "Unknown"
+        artistNameLabel.text = NSLocalizedString("Unknown", comment: "Unknown")
+    
       } else {
         artistNameLabel.text = searchResult.artist
       }
@@ -88,7 +93,7 @@ class DetailViewController: UIViewController {
 
     let priceText: String
     if searchResult.price == 0 {
-      priceText = "Free"
+      priceText = NSLocalizedString("Free", comment: "Free")
     } else if let text = formatter.string(from: searchResult.price as NSNumber) {
       priceText = text
     } else {
@@ -102,16 +107,6 @@ class DetailViewController: UIViewController {
         }
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

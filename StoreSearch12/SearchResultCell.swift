@@ -34,9 +34,9 @@ class SearchResultCell: UITableViewCell {
         nameLabel.text = result.name
         //Check to see if the artist is not empty. If it is, then display unknown.
         if result.artist.isEmpty {
-            artistNameLabel.text = "Unknown"
+            artistNameLabel.text = NSLocalizedString("Unknown", comment: "Unknown")
         } else {
-            artistNameLabel.text = String(format: "%@ (%@)",
+            artistNameLabel.text = String(format: NSLocalizedString("ARTIST_NAME_LABEL_FORMAT", comment: "Format for artist name label"),
                                           result.artist,
                                           result.type)
         }
