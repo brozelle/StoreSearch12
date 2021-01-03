@@ -5,7 +5,7 @@
 //  Created by Buck Rozelle on 12/24/20.
 //
 //
-//NSLocalizedString("E-Book", comment: "Localized kind: E-Book")
+//
 //
 //
 
@@ -75,18 +75,19 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor.clear
         let dimmingView = GradientView(frame: CGRect.zero)
         dimmingView.frame = view.bounds
-        view.insertSubview(dimmingView, at: 0)
+        view.insertSubview(dimmingView,
+                           at: 0)
       } else {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
         popupView.isHidden = true
         if let displayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
             title = displayName
+        }
       }
       if searchResult != nil {
         updateUI()
       }
     }
-}
     
     // MARK: - Helper Methods
     func updateUI() {
